@@ -11,8 +11,6 @@ const client = new Client({
     ],
 })
 
-
-
 client.on('ready', () => {
     console.log('The bot is ready');
 
@@ -25,7 +23,5 @@ client.on('messageCreate', message => {
         message.reply('pong')
     }
 })
-
-
 
 client.login(process.env.TOKEN)
