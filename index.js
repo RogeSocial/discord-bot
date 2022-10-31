@@ -1,16 +1,23 @@
 const { Client, GatewayIntentBits } = require('discord.js')
 require('dotenv/config')
+const welcome = require('./welcome.js')
 
 const client = new Client({
     intents : [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
     ],
 })
 
+
+
 client.on('ready', () => {
     console.log('The bot is ready');
+
+    welcome(client);
+    
 })
 
 client.on('messageCreate', message => {
@@ -19,8 +26,6 @@ client.on('messageCreate', message => {
     }
 })
 
-bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('channelID').send("Welcome")
-})
+
 
 client.login(process.env.TOKEN)
