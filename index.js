@@ -17,12 +17,10 @@ client.on('messageCreate', message => {
     if (message.content === '!ping') {
         message.reply('pong')
     }
-    if (message.content === '!quote') {
-        message.reply('Better to cum in the sink than to sink in the cum!')
-    }
-    if (message.content === '!uc') {
-        message.reply('UC is the greatest resource on the earth that will grant you unlimited power')
-    }
+})
+
+bot.on('guildMemberAdd', member => {
+    member.guild.channels.get('channelID').send("Welcome")
 })
 
 client.login(process.env.TOKEN)
